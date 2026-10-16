@@ -1,0 +1,82 @@
+=== GIT COMMIT GRAPH (ONELINE) ===
+* * 8e1acab - dopaemon <polarisdp@gmail.com> (Fri Oct 16 14:03:19 2026 +0700): ci(artifact): bổ sung bước tải lên báo cáo HTML coverage artifact
+* * d1147d1 - dopaemon <polarisdp@gmail.com> (Fri Oct 16 13:54:35 2026 +0700): test(mocking): hiện thực TestMediumLevel và TestHardLevel với mock GPS
+* * e68418e - dopaemon <polarisdp@gmail.com> (Fri Oct 16 13:45:08 2026 +0700): ci(quality-gate): tích hợp linter flake8 và cổng chất lượng fail-under 80%
+* * 096464a - dopaemon <polarisdp@gmail.com> (Fri Oct 16 13:36:12 2026 +0700): ci(workflow): thiết lập đường ống GitHub Actions CI cơ bản
+* * 98e0bca - dopaemon <polarisdp@gmail.com> (Fri Oct 16 13:27:41 2026 +0700): test(unit): bổ sung bộ kiểm thử đơn vị cơ bản TestEasyLevel
+* * 726c34b - dopaemon <polarisdp@gmail.com> (Fri Oct 16 13:18:24 2026 +0700): feat(init): khởi tạo cấu trúc backend yummyapp và ghim phiên bản requirements.txt
+
+=== DETAILED GIT LOG (WITH CO-AUTHORS & METADATA) ===
+commit 8e1acabe90b1b7fc2675c6213b13d54a501a4011
+Author: dopaemon <polarisdp@gmail.com>
+Date:   Fri Oct 16 14:03:19 2026 +0700
+
+    ci(artifact): bổ sung bước tải lên báo cáo HTML coverage artifact
+    
+    - Sử dụng actions/upload-artifact@v4 lưu trữ thư mục coverage_html/
+    - Thiết lập thời gian lưu giữ (retention-days) 7 ngày
+    - Đặt điều kiện if: always() đảm bảo artifact luôn được xuất
+    
+    Co-authored-by: Tran Nguyen Tuan Anh <2312577@dlu.edu.vn>
+
+commit d1147d1ab1d6cf78647279bb85065affafcad2f3
+Author: dopaemon <polarisdp@gmail.com>
+Date:   Fri Oct 16 13:54:35 2026 +0700
+
+    test(mocking): hiện thực TestMediumLevel và TestHardLevel với mock GPS
+    
+    - Bổ sung TestMediumLevel kiểm tra áp dụng mã khuyến mãi và ngoại lệ kết nối mạng
+    - Bổ sung TestHardLevel sử dụng unittest.mock.patch đóng thế phần cứng GPS
+    - Hiện thực phương thức test_pho_bo_sau_rieng kiểm tra món ăn đặc biệt
+    - Nâng độ bao phủ mã nguồn tổng thể từ 35% lên 98% (vượt Quality Gate)
+    
+    Co-authored-by: Tran Nguyen Tuan Anh <2312577@dlu.edu.vn>
+
+commit e68418e966307b2f72a449ab6ce129f654991395
+Author: dopaemon <polarisdp@gmail.com>
+Date:   Fri Oct 16 13:45:08 2026 +0700
+
+    ci(quality-gate): tích hợp linter flake8 và cổng chất lượng fail-under 80%
+    
+    - Bổ sung bước kiểm tra cú pháp tĩnh flake8 theo nguyên lý Fail-Fast
+    - Thiết lập ngưỡng kiểm định độ bao phủ mã nguồn coverage report --fail-under=80
+    - Cấu hình sinh báo cáo coverage html phục vụ trích xuất artifacts
+    
+    Co-authored-by: Tran Nguyen Tuan Anh <2312577@dlu.edu.vn>
+
+commit 096464a78db6eca48902c90855d3bd356af157e4
+Author: dopaemon <polarisdp@gmail.com>
+Date:   Fri Oct 16 13:36:12 2026 +0700
+
+    ci(workflow): thiết lập đường ống GitHub Actions CI cơ bản
+    
+    - Tạo tập tin cấu hình .github/workflows/yummyapp-ci.yml kích hoạt trên push và pull_request
+    - Thiết lập môi trường máy chủ Ubuntu runner và cài đặt Python 3.11
+    - Cài đặt dependencies từ requirements.txt và thực thi unittest discover
+    
+    Co-authored-by: Tran Nguyen Tuan Anh <2312577@dlu.edu.vn>
+
+commit 98e0bca5a42b36dc26e1edb49ba84d0895666625
+Author: dopaemon <polarisdp@gmail.com>
+Date:   Fri Oct 16 13:27:41 2026 +0700
+
+    test(unit): bổ sung bộ kiểm thử đơn vị cơ bản TestEasyLevel
+    
+    - Hiện thực lớp TestEasyLevel kiểm tra chức năng tính tổng tiền đơn hàng
+    - Kiểm thử các trường hợp: 1 món, nhiều món, giỏ hàng rỗng, số lượng 0
+    - Độ bao phủ mã nguồn ban đầu đạt ~35%
+    
+    Co-authored-by: Tran Nguyen Tuan Anh <2312577@dlu.edu.vn>
+
+commit 726c34b0248cfd9acf8dcfb0d5831bdb42aff5f5
+Author: dopaemon <polarisdp@gmail.com>
+Date:   Fri Oct 16 13:18:24 2026 +0700
+
+    feat(init): khởi tạo cấu trúc backend yummyapp và ghim phiên bản requirements.txt
+    
+    - Bổ sung module mô phỏng phần cứng định vị GPS gps_service.py
+    - Bổ sung module logic nghiệp vụ đặt món và khuyến mãi yummy_app.py
+    - Ghim phiên bản các thư viện phụ thuộc requests, coverage, flake8 trong requirements.txt
+    - Bổ sung cấu hình .gitignore loại bỏ file tạm
+    
+    Co-authored-by: Tran Nguyen Tuan Anh <2312577@dlu.edu.vn>
